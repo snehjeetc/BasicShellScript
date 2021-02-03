@@ -1,0 +1,57 @@
+Q7.) Linux command to search a word "systemd" from all the given log files and 
+print number of occurence more than 0 against each file
+Ans:
+        grep -c systemd ./*.log  (if all the files are concerned)
+        sudo grep -c systemd /var/log/.*log (if all the files of 
+                                                /var/log/*.log are concerned
+
+Q8.) Create process list
+
+ans:
+ps -e -o pid, -o ppid, -o comm=CMD, -o %mem, -o %cpu
+
+Q9.) Print last 4 frequently access URLS count in sorted order
+from log file
+
+ans:
+cat access.log | awk '{print $7}' | sort | uniq -c | sort -nr | head -n 4 
+
+Q10.)Print 4 last 4 frequently access unique urls at a particular hours 
+from access.log
+
+ans:
+
+Q11.) Print list of web response code in the unique sorted order at spefific 
+hours?
+
+ans :
+    //how to access specific timestamp / hours
+cat access.log | awk '{print $9}' | sort -n | uniq -c | tail -n 4
+
+Q12.) Print list of last 10 unique sorted client IP
+
+ans:
+    cat access.log | awk '{print $1}' | sort | uniq -c | tail -n 10
+
+Q13.) Data Analasis / manipulation (AWK)
+
+ans:
+    i.) cat data.csv | awk '{ if($4 > 100000) print $2" : "$7 }'
+    ii.)cat data.csv | grep -i captain |  awk '{sum+=$7}END{print sum}'
+    iii.)cat data.csv | awk '{ if(70000<=$5 && $5<=100000) print $3" : "$5 }'
+    iv.)cat data.csv | awk '{sum+=$4}END{print sum/NR}'
+
+Q15.) Find the difference between original file and updated file
+
+ans:
+    using diff command 
+    if diff command shows no output that means the two files are same 
+    else it shows which lines are different
+    $ diff -r  original/ updated/
+    without -r it will not check the subdirectories
+    $  diff -y ./original/original-file.sh ./updated/updated-file.sh
+
+Q1.) Get user info from etc/passwd and change ownership of user's home directory 
+    (selected userid higher than 1000)
+
+    a.)
